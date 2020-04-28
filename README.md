@@ -18,8 +18,8 @@ We have provided a script `gen-credentials.sh` that allows for manual creation o
 
 `bash gen-credentials.sh` will run the script, but make sure you are in the root direcotry of the repo or the script will fail. It should produce 5 files in `puca_certs`:
 
--`puca-root-ca.crt.key.pem`: the root ca and its respective private key 
--`puca-tls-ca.crt.key.pem`: the tls ca and its respective private key 
--`puca-ca-chain.crt.pem`: the root ca and the tls ca WITHOUT their keys
--`puca-server.crt.key.pem`: the server cert and its respective private key 
--`puca-client.crt.key.pem`: the client cert and its respective private key 
+- `puca-root-ca.crt.key.pem`: the root ca and its respective private key 
+- `puca-tls-ca.crt.key.pem`: the tls ca and its respective private key 
+- `puca-ca-chain.crt.pem`: the root ca and the tls ca WITHOUT their keys
+- `puca-server.crt.key.pem`: the server cert and its respective private key 
+- `puca-client.crt.key.pem`: the client cert and its respective private key 
