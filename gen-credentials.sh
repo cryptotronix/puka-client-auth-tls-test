@@ -23,7 +23,7 @@ print_usage() {
   echo -e "sh gen-credentials -a"
   echo -e "\n\tGenerates the following in puca-certs:\n"
   echo -e "\tpuca-root-ca.cert.key.pem: a root ca and its respective private key"
-  echo -e "\tpuca-tls-ca.cert.key.pem: a tls ca and its respective private key"
+  echo -e "\tpuca-tls-ca.cert.key.pem: an intermediate ca and its respective private key"
   echo -e "\tpuca-ca-chain.cert..pem: the root ca and the tls ca WITHOUT their keys"
   echo -e "\tpuca-server.cert.key.pem: a server cert and its respective private key"
   echo -e "\tpuca-client.cert.key.pem: a client cert and its respective private key\n"
