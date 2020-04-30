@@ -15,7 +15,7 @@ To generate a client cert from a valid CSR, run:
 ```
 In this case `[PKI DIRECTORY PATH]` is `puka-certs/` if you are in the repo root.
 
-Upon success, you'll find `client-cert.pem` in your current directory.
+Upon success, you'll find `client.cert.pem` in your current directory.
 
 ## Accessing the server using s\_client
 
@@ -27,7 +27,7 @@ echo -e "GET / HTTP/1.1\r\nHost: localhost\r\n\r\n" | openssl s_client -tls1_2 -
 
 `[CA CHAIN]` are the certs contained in `puka-certs/puka-ca-chain.cert.pem`.
 
-`[CLIENT CERT]` is your generated `client-cert.pem`.
+`[CLIENT CERT]` is your generated `client.cert.pem`.
 
 `[CLIENT KEY]` is `1`.
 

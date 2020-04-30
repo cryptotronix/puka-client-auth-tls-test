@@ -36,9 +36,9 @@ sign() {
 		-notext \
 		-md sha256 \
 		-in $csr \
-		-out $TMPDIR/intermediate/certs/client-cert.pem
+		-out $TMPDIR/intermediate/certs/client.cert.pem
 	#move the cert to the top level
-	cp $TMPDIR/intermediate/certs/client-cert.pem $EXECDIR/client-cert.pem
+	cp $TMPDIR/intermediate/certs/client-cert.pem $EXECDIR/client.cert.pem
 }
 
 # usage captures
