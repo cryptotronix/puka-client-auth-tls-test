@@ -15,4 +15,16 @@ If successful, you'll find `client-cert.pem` in your current directory.
 
 ## Accessing the server using s\_client
 
+The format for a basic request is as follows:
 
+```
+echo -e "GET / HTTP/1.1\r\nHost: localhost\r\n\r\n" | openssl s_client -tls1_2 -ign_eof -connect localhost:8443 -CAfile [CA CHAIN] -certform PEM -cert [CLIENT CERT] -key [CLIENT KEY] -keyform [FORM]
+```
+
+`[CA CHAIN]` should be the certs contained in `/puka-certs/puka-ca-chain.cert.pem`.
+
+`[CLIENT CERT]` is your generated `client-cert.pem`.
+
+`[CLIENT KEY]` is `1`.
+
+`[FORM]` is `ENGINE` as we are using the puka engine.
