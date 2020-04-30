@@ -6,16 +6,16 @@ config_dir=
 
 # print the usage of this script
 print_usage() {
-  printf "\nUsage: init-puca-pki.sh CONFIGS_DIR\n"
-  printf "\nInitialize the puca pki using the CONFIGS_DIR specified. Should be run in the same directory as CONFGIS_DIR\n\n"
+  printf "\nUsage: init-puka-pki.sh CONFIGS_DIR\n"
+  printf "\nInitialize the puka pki using the CONFIGS_DIR specified. Should be run in the same directory as CONFGIS_DIR\n\n"
   echo -e "Example:\n"
-  echo -e "./init-puca-pki.sh configs"
+  echo -e "./init-puka-pki.sh configs"
   echo -e "\n\tGenerates the following in your current directory:\n"
-  echo -e "\tpuca-root-ca.cert.key.pem: a root ca and its respective private key"
-  echo -e "\tpuca-tls-ca.cert.key.pem: an intermediate ca and its respective private key"
-  echo -e "\tpuca-ca-chain.cert..pem: the root ca and the tls ca WITHOUT their keys"
-  echo -e "\tpuca-server.cert.key.pem: a server cert and its respective private key"
-  echo -e "\tpuca-client.cert.key.pem: a client cert and its respective private key\n"
+  echo -e "\tpuka-root-ca.cert.key.pem: a root ca and its respective private key"
+  echo -e "\tpuka-tls-ca.cert.key.pem: an intermediate ca and its respective private key"
+  echo -e "\tpuka-ca-chain.cert..pem: the root ca and the tls ca WITHOUT their keys"
+  echo -e "\tpuka-server.cert.key.pem: a server cert and its respective private key"
+  echo -e "\tpuka-client.cert.key.pem: a client cert and its respective private key\n"
 }
 
 init() {
@@ -43,7 +43,7 @@ init() {
 		-sha256 \
 		-extensions v3_ca \
 	      	-out $TMPDIR/certs/root-ca.cert.pem \
-		-subj "/C=AU/ST=Some-State/O=Internet Widgets Pty Ltd/CN=Puca Training Root CA"
+		-subj "/C=AU/ST=Some-State/O=Internet Widgets Pty Ltd/CN=Puka Training Root CA"
 
 	# prep to make intermediate ca
 	cd $TMPDIR
@@ -70,7 +70,7 @@ init() {
 		-sha256 \
 		-key $TMPDIR/intermediate/private/intermediate.key.pem \
 		-out $TMPDIR/intermediate/csr/intermediate.csr.pem \
-		-subj "/C=AU/ST=Some-State/O=Internet Widgets Pty Ltd/CN=Puca Training TLS CA"
+		-subj "/C=AU/ST=Some-State/O=Internet Widgets Pty Ltd/CN=Puka Training TLS CA"
 	openssl ca \
 		-config $configs_dir/root.conf \
 		-extensions v3_intermediate_ca \
@@ -94,7 +94,7 @@ init() {
 		-sha256 \
 		-key $TMPDIR/intermediate/private/server.key.pem \
 		-out $TMPDIR/intermediate/csr/server.csr.pem \
-		-subj "/C=AU/ST=Some-State/O=Internet Widgets Pty Ltd/CN=Puca Training Server"
+		-subj "/C=AU/ST=Some-State/O=Internet Widgets Pty Ltd/CN=Puka Training Server"
 	openssl ca \
 		-config $configs_dir/intermediate.conf \
 		-extensions server_cert \
@@ -107,19 +107,19 @@ init() {
 
 	# make root ca + key file
 	cat $TMPDIR/certs/root-ca.cert.pem \
-	      $TMPDIR/private/root.key.pem > $EXECDIR/puca-root-ca.cert.key.pem
+	      $TMPDIR/private/root.key.pem > $EXECDIR/puka-root-ca.cert.key.pem
 
 	# make tls ca + key file
 	cat $TMPDIR/intermediate/certs/intermediate-ca.cert.pem \
-	      $TMPDIR/intermediate/private/intermediate.key.pem > $EXECDIR/puca-tls-ca.cert.key.pem
+	      $TMPDIR/intermediate/private/intermediate.key.pem > $EXECDIR/puka-tls-ca.cert.key.pem
 
 	# make ca chain file
 	cat $TMPDIR/intermediate/certs/intermediate-ca.cert.pem \
-	      $TMPDIR/certs/root-ca.cert.pem > $EXECDIR/puca-ca-chain.cert.pem
+	      $TMPDIR/certs/root-ca.cert.pem > $EXECDIR/puka-ca-chain.cert.pem
 
 	# make server cert + key file
 	cat $TMPDIR/intermediate/certs/server.cert.pem \
-	      $TMPDIR/intermediate/private/server.key.pem > $EXECDIR/puca-server.cert.key.pem
+	      $TMPDIR/intermediate/private/server.key.pem > $EXECDIR/puka-server.cert.key.pem
 }
 
 if [ $# -ne 1 ]; then
@@ -165,7 +165,7 @@ trap 'exit "$?"'        ERR
 trap 'rm -rf "$TMPDIR"' EXIT
 
 # enter our work directory
-export PUCA_CWD=$TMPDIR
+export PUKA_CWD=$TMPDIR
 
 init
 

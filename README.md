@@ -1,4 +1,4 @@
-# puca-training-endpoint
+# puka-training-endpoint
 A training NGINX endpoint with client and server verification.
 
 ## Server Usage
@@ -9,6 +9,10 @@ Once running, simple static html page with client verification should now be ava
 
 ## Client Cert Generation
 
-To generate a client cert from a valid CSR, run `./create-client-cert.sh [FILENAME OF YOUR CSR] [PKI DIRECTORY PATH]`. In this case `PKI DIRECTORY` is `puca-certs/`.
+To generate a client cert from a valid CSR, run `./create-client-cert.sh [FILENAME OF YOUR CSR] [PKI DIRECTORY PATH]`. In this case `PKI DIRECTORY` is `puka-certs/`.
 
 If successful, you'll find `client-cert.pem` in your current directory.
+
+## Accessing the server using s\_client
+
+

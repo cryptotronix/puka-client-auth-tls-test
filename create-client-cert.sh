@@ -8,9 +8,9 @@ csr=
 # print the usage of this script
 print_usage() {
   printf "\nUsage: create_client_cert.sh CSR PKI_DIR\n"
-  printf "\nSign the provided CSR to create a client cert using the puca pki at PKI_DIR.\n\n"
+  printf "\nSign the provided CSR to create a client cert using the puka pki at PKI_DIR.\n\n"
   echo -e "Example:\n"
-  echo -e "./create_client_cert.sh /home/example.csr puca-certs/"
+  echo -e "./create_client_cert.sh /home/example.csr puka-certs/"
   echo -e "\n\t signs example.csr to create client-cert.pem in your current directory\n"
 }
 
@@ -24,8 +24,8 @@ sign() {
 	echo 1000 > crlnumber
 	cd $EXECDIR
 
-	cp $pkidir/puca-tls-ca.cert.key.pem $TMPDIR/intermediate/certs/intermediate-ca.cert.pem
-	cp $pkidir/puca-tls-ca.cert.key.pem $TMPDIR/intermediate/private/intermediate.key.pem
+	cp $pkidir/puka-tls-ca.cert.key.pem $TMPDIR/intermediate/certs/intermediate-ca.cert.pem
+	cp $pkidir/puka-tls-ca.cert.key.pem $TMPDIR/intermediate/private/intermediate.key.pem
 
 	echo "generating cert..."
 
@@ -70,8 +70,8 @@ if [ ! -d $pkidir ]; then
 	>&2 echo "error: $pkidir does not exist"
 	exit 1
 else
-	if [ ! -r $pkidir/puca-tls-ca.cert.key.pem ]; then
-		>&2 echo "error: $pkidir does not contain initialized puca pki"
+	if [ ! -r $pkidir/puka-tls-ca.cert.key.pem ]; then
+		>&2 echo "error: $pkidir does not contain initialized puka pki"
 		exit 1
 	fi
 	if [ ! -d $pkidir/configs ]; then
@@ -98,7 +98,7 @@ trap 'exit "$?"'        ERR
 trap 'rm -rf "$TMPDIR"' EXIT
 
 # enter our work directory
-export PUCA_CWD=$TMPDIR
+export PUKA_CWD=$TMPDIR
 
 # perform the sign
 sign
