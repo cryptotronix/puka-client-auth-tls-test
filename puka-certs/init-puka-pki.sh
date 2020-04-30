@@ -122,17 +122,16 @@ init() {
 	      $TMPDIR/intermediate/private/server.key.pem > $EXECDIR/puka-server.cert.key.pem
 }
 
+if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "help" ]; then
+	print_usage
+	exit 0
+fi
 if [ $# -ne 1 ]; then
 	print_usage
 	exit 1
 fi
 
 configs_dir=`realpath $1`
-
-if [ "$configs_dir" = "-h" ] || [ "$configs_dir" = "--help" ] || [ "$configs_dir" = "help" ]; then
-	print_usage
-	exit 0
-fi
 
 # input verification
 if [ ! -d $configs_dir ]; then

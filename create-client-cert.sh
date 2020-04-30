@@ -43,6 +43,10 @@ sign() {
 
 # usage captures
 
+if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "help" ]; then
+	print_usage
+	exit 0
+fi
 if [ $# -ne 2 ]; then
 	print_usage
 	exit 1
@@ -50,11 +54,6 @@ fi
 
 csr=`realpath $1`
 pkidir=`realpath $2`
-
-if [ "$csr" = "-h" ] || [ "$csr" = "--help" ] || [ "$csr" = "help" ]; then
-	print_usage
-	exit 0
-fi
 
 # input verification
 
