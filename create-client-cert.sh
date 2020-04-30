@@ -11,7 +11,7 @@ print_usage() {
   printf "\nSign the provided CSR to create a client cert using the puka pki at PKI_DIR.\n\n"
   echo -e "Example:\n"
   echo -e "./create_client_cert.sh /home/example.csr puka-certs/"
-  echo -e "\n\t signs example.csr to create client-cert.pem in your current directory\n"
+  echo -e "\n\t signs example.csr to create client.cert.pem in your current directory\n"
 }
 
 sign() {
@@ -38,7 +38,7 @@ sign() {
 		-in $csr \
 		-out $TMPDIR/intermediate/certs/client.cert.pem
 	#move the cert to the top level
-	cp $TMPDIR/intermediate/certs/client-cert.pem $EXECDIR/client.cert.pem
+	cp $TMPDIR/intermediate/certs/client.cert.pem $EXECDIR/client.cert.pem
 }
 
 # usage captures
