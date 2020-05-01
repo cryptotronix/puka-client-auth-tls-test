@@ -22,9 +22,9 @@ Upon success, you'll find `client.cert.pem` in your current directory.
 We have provided a script for easy usage of a long s\_client one-liner:
 
 ```
-./test-tls-connection.sh [CA CHAIN] [CLIENT CERT]
+./test-tls-connection.sh [CLIENT CERT] [CA CHAIN]
 ```
 
-`[CA CHAIN]` are the certs contained in `puka-certs/puka-ca-chain.cert.pem`.
-
 `[CLIENT CERT]` is your generated `client.cert.pem`. Note, the CSR that created this cert must have been made using the puka engine.
+
+`[CA CHAIN]` are the certs contained in `puka-certs/puka-ca-chain.cert.pem`.
