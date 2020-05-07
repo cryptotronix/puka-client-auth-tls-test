@@ -7,7 +7,7 @@ config_dir=
 # print the usage of this script
 print_usage() {
   printf "\nUsage: init-puka-pki.sh CONFIGS_DIR\n"
-  printf "\nInitialize the puka pki using the CONFIGS_DIR specified. Should be run in the same directory as CONFGIS_DIR\n\n"
+  printf "\nInitialize the puka pki using the CONFIGS_DIR specified. Should be run in the same directory as CONFIGS_DIR\n\n"
   echo -e "Example:\n"
   echo -e "./init-puka-pki.sh configs"
   echo -e "\n\tGenerates the following in your current directory:\n"
@@ -46,7 +46,6 @@ init() {
 		-subj "/C=AU/ST=Some-State/O=Internet Widgets Pty Ltd/CN=Puka Training Root CA"
 
 	# prep to make intermediate ca
-	cd $TMPDIR
 	cd $TMPDIR
 	mkdir -p intermediate
 	cd intermediate
@@ -94,7 +93,7 @@ init() {
 		-sha256 \
 		-key $TMPDIR/intermediate/private/server.key.pem \
 		-out $TMPDIR/intermediate/csr/server.csr.pem \
-		-subj "/C=AU/ST=Some-State/O=Internet Widgets Pty Ltd/CN=Puka Training Server"
+		-subj "/C=AU/ST=Some-State/O=Internet Widgets Pty Ltd/CN=localhost"
 	openssl ca \
 		-config $configs_dir/intermediate.conf \
 		-extensions server_cert \
