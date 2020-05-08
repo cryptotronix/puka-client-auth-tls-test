@@ -41,4 +41,4 @@ elif [ ! -r $ca ]; then
 	exit 1
 fi
 
-echo -e "GET / HTTP/1.1\r\nHost: localhost\r\n\r\n" | openssl s_client -tls1_2 -ign_eof -connect localhost:8443 -CAfile $ca -certform PEM -cert $cert -key 1 -keyform ENGINE -engine puka-engine
+echo -e "GET / HTTP/1.1\r\nHost: localhost\r\n\r\n" | openssl s_client -tls1_2 -ign_eof -connect localhost:8443 -CAfile $ca -certform PEM -cert $cert -key 1 -keyform ENGINE -engine puka_engine
