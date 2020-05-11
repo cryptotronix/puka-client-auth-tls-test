@@ -53,6 +53,9 @@ curl \
 	--tlsv1.2 \
 	$base_uri/tux
 
-if [ $? -eq 58 ]; then
-	echo -e "\nEnsure that your client cert file also contains the private key. "
+curlrc=$?
+if [ $curlrc -eq 58 ]; then
+	echo -e "\nEnsure that your client cert file also contains the private key."
+else
+	exit $curlrc
 fi
