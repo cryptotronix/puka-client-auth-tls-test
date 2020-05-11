@@ -17,6 +17,13 @@ In this case `[PKI DIRECTORY PATH]` is `puka-certs/` if you are in the repo root
 
 Upon success, you'll find `client.cert.pem` in your current directory.
 
+## CSR Generation
+
+To generate a CSR using the `puka_engine`, use the following command:
+```
+openssl req -new -sha256 -engine puka_engine -keyform ENGINE -key 1 -out client.csr.pem
+```
+
 ## Accessing the server using s\_client
 
 We have provided a script for easy usage of a long s\_client one-liner:
