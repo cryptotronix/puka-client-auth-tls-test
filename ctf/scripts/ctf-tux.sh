@@ -55,7 +55,7 @@ curl \
 
 curlrc=$?
 if [ $curlrc -eq 58 ]; then
-	echo -e "\nEnsure that your client cert file also contains the private key."
+	echo -e "\nEnsure that your client cert file also contains the private key ($ cat client.key.pem >> client.cert.pem)."
 else
 	exit $curlrc
 fi

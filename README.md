@@ -1,8 +1,7 @@
-# puka-training-endpoint
+# puka-client-auth-tls-test
 A training NGINX endpoint with client and server verification.
 
 ## Server Usage
-
 To start the server, run `./start_server.sh`. To free the terminal, use `^C`.
 
 Once running, simple static html page with client verification should now be available at `https://localhost:8443`.
